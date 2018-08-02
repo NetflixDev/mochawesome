@@ -12,7 +12,7 @@
     "tdd": "npm run lint && cross-env NODE_ENV=test nyc mocha --watch",
     "dev": "babel --watch src -d dist",
     "build": "babel src -d dist",
-    "prepack": "npm run test && npm run build"
+    "packcontent": "npm run build"
   },
   "author": "Adam Gruber",
   "license": "MIT",
