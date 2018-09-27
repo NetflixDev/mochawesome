@@ -1,0 +1,17 @@
+.babelrc
+.codeclimate.yml
+.eslintrc
+.git
+.github
+.gitignore
+.npmignore
+.travis.yml
+404.html
+CONTRIBUTING.md
+docs
+node_modules
+package-lock.json
+src
+test
+test-functional
+test-programmatic
