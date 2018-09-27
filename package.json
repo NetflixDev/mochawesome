@@ -59,7 +59,7 @@
     "diff": "^3.4.0",
     "json-stringify-safe": "^5.0.1",
     "lodash": "^4.17.3",
-    "mochawesome-report-generator": "NetflixDev/mochawesome-report-generator#feature",
+    "mochawesome-report-generator": "NetflixDev/mochawesome-report-generator",
     "strip-ansi": "^4.0.0",
     "uuid": "^3.0.1"
   },
