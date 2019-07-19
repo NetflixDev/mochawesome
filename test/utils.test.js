@@ -9,7 +9,6 @@ const utils = proxyquire('../src/utils', {
 
 const {
   log,
-  getPercentClass,
   cleanCode,
   cleanTest,
   cleanSuite
@@ -55,26 +54,17 @@ describe('Mochawesome Utils', () => {
     });
   });
 
-  describe('getPercentClass', () => {
-    it('should return \'danger\'', () => {
-      getPercentClass(50).should.equal('danger');
-    });
-
-    it('should return \'warning\'', () => {
-      getPercentClass(63).should.equal('warning');
-    });
-
-    it('should return \'success\'', () => {
-      getPercentClass(85).should.equal('success');
-    });
-  });
-
   describe('cleanCode', () => {
     const expected = 'return true;';
     let fnStr;
 
     it('should clean standard function syntax, single line', () => {
       fnStr = 'function () { return true; }';
+      cleanCode(fnStr).should.equal(expected);
+    });
+
+    it('should clean standard named function syntax, single line', () => {
+      fnStr = 'function myTest() { return true; }';
       cleanCode(fnStr).should.equal(expected);
     });
 
@@ -174,6 +164,19 @@ describe('Mochawesome Utils', () => {
       ].join('\n');
       cleanCode(fnStr).should.equal(exp);
     });
+
+    it('should not modify non-function strings', () => {
+      fnStr = `Lorem Ipsum is simply dummy text of the printing and typesetting
+      industry. Lorem Ipsum has been the industry's standard dummy text ever
+      since the 1500s, when an unknown printer took a galley of type and
+      scrambled it to make a type specimen book. It has survived not only five
+      centuries, but also the leap into electronic typesetting, remaining
+      essentially unchanged. It was popularised in the 1960s with the release
+      of Letraset sheets containing Lorem Ipsum passages, and more recently
+      with desktop publishing software like Aldus PageMaker including versions
+      of Lorem Ipsum.`;
+      cleanCode(fnStr).should.equal(fnStr);
+    });
   });
 
   describe('cleanTest', () => {
@@ -191,7 +194,6 @@ describe('Mochawesome Utils', () => {
       'context',
       'code',
       'err',
-      'isRoot',
       'uuid',
       'parentUUID',
       'skipped',

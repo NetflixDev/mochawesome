@@ -1,20 +1,53 @@
 # mochawesome changelog
 
-## Unreleased
+## [Unreleased]
 
-## [3.0.3] / 2018-07-25
+## [4.0.1] - 2019-06-15
+### Fixed
+- Issue where using `addContext` inside a `before` or `after` hook would incorrectly apply context to the test [#284](https://github.com/adamgruber/mochawesome/issues/284)
+
+## [4.0.0] - 2019-06-04
+### Changed
+- Drop support for Node <8
+- Require peer dependency of mocha >5
+- Removed Babel dependency
+- Replace lodash dependency with individual modules
+- Updated codeclimate config to version 2
+- Updated various dependencies
+- **Breaking changes to JSON data structure**
+  - Renamed `allSuites` to `results` and made it an array of suites
+  - Removed `isRoot` property from cleaned tests (only suites can be a root)
+  - Removed class-related stats (`passPercentClass`, `pendingPercentClass`)
+  - Added `uuid` to suites
+  - Removed rounding of `passPercent` and `pendingPercent`
+  - Removed `copyrightYear` property
+  - Added new `meta` property to track info about the test run (useful for debugging)
+
+## [3.1.2] - 2019-04-17
+### Fixed
+- Issue where a suite with skipped tests reports duration as `0`. [#276](https://github.com/adamgruber/mochawesome/issues/276)
+
+## [3.1.1] - 2018-10-22
+### Changed
+- Switch from RegExp to state machine for stripping function start in `cleanCode` method. [#257](https://github.com/adamgruber/mochawesome/issues/257)
+
+## [3.1.0] - 2018-10-17
+### Changed
+- Invert logic for getting test code by checking for `test.body` before `test.fn` inside `cleanTest` method [#252](https://github.com/adamgruber/mochawesome/issues/252)
+
+## [3.0.3] - 2018-07-25
 ### Changed
 - Reworked `cleanCode` regexes to handle more cases [#244](https://github.com/adamgruber/mochawesome/issues/244)
 
-## [3.0.2] / 2018-01-25
+## [3.0.2] - 2018-01-25
 ### Changed
 - Call `stripAnsi` for test/suite titles. [#223](https://github.com/adamgruber/mochawesome/pull/223) (@JoeTheFkingFrypan)
 
-## [3.0.1] / 2017-12-26
+## [3.0.1] - 2017-12-26
 ### Fixed
 - Updated RegExp in `cleanCode` method to handle arrow functions without braces. [#220](https://github.com/adamgruber/mochawesome/issues/220)
 
-## [3.0.0] / 2017-11-30
+## [3.0.0] - 2017-11-30
 This release is in tandem with and requires mochawesome-report-generator >= 3.0.0.
 
 ### Added
@@ -161,6 +194,12 @@ This release is in tandem with and requires mochawesome-report-generator >= 3.0.
 - Custom font-icon set
 - All fonts are now local to the report
 
+[Unreleased]: https://github.com/adamgruber/mochawesome/compare/4.0.1...HEAD
+[4.0.1]: https://github.com/adamgruber/mochawesome/compare/4.0.0...4.0.1
+[4.0.0]: https://github.com/adamgruber/mochawesome/compare/3.1.2...4.0.0
+[3.1.2]: https://github.com/adamgruber/mochawesome/compare/3.1.1...3.1.2
+[3.1.1]: https://github.com/adamgruber/mochawesome/compare/3.1.0...3.1.1
+[3.1.0]: https://github.com/adamgruber/mochawesome/compare/3.0.3...3.1.0
 [3.0.3]: https://github.com/adamgruber/mochawesome/compare/3.0.2...3.0.3
 [3.0.2]: https://github.com/adamgruber/mochawesome/compare/3.0.1...3.0.2
 [3.0.1]: https://github.com/adamgruber/mochawesome/compare/3.0.0...3.0.1
